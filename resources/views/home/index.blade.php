@@ -11,7 +11,7 @@
             <div class="dropdown-schedule d-flex align-content-center w-100 border">
                 <div class="p-2 flex-fill">
                     <select class="form-select" name="device_id" aria-label="perangkat_input" required>
-                        <option selected>Pilih Perangkat</option>
+                        <option value="" selected>Pilih Perangkat</option>
                         @foreach($devices as $device)
                         <option value="{{ $device->id }}">{{ $device -> name }}</option>
                         @endforeach
