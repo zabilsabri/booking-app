@@ -10,8 +10,9 @@
             <div class="p-2 flex-fill">
                 <select class="form-select" aria-label="perangkat_input">
                     <option selected>Pilih Perangkat</option>
-                    <option value="1">PS 4</option>
-                    <option value="2">PS 5</option>
+                    @foreach($devices as $device)
+                    <option value="{{ $device->id }}">{{ $device -> name }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="p-2 flex-fill">
@@ -27,95 +28,40 @@
     </div>
     <div>
         <h2>Harga Sewa</h2>
+        @foreach($devices as $device)
         <div class="d-flex mt-3">
             <div class="flex-shrink-0">
-                <img src="{{asset('image/ps4.png')}}" width="350" height="350" alt="ps4_pic">
+                <img src="{{asset($device -> image)}}" width="350" height="350" alt="{{ $device->image }}_pic">
             </div>
             <div class="flex-grow-1 ms-3">
-                <h4>Playstation 4</h4>
+                <h4>{{ $device -> name }}</h4>
+                <p>{{ $device -> description }}</p>
                 <table>
                     <tr>
                         <td>Stick</td>
                         <td>:</td>
-                        <td style="padding-left: 14px">2</td>
+                        <td style="padding-left: 14px">{{ $device -> joysticks_amount }}</td>
                     </tr>
                     <tr>
                         <td>Status</td>
                         <td>:</td>
-                        <td style="padding-left: 14px">Original</td>
-                    </tr>
-                    <tr>
-                        <td class="align-top">Game</td>
-                        <td class="align-top">:</td>
-                        <td>
-                            <ul>
-                                <li>PES eFootball 2020 (Option File Pemain 2025) - 4P</li>
-                                <li>EA SPORTS FC 2024 - 4P</li>
-                                <li>Grand Thief Auto 5 - 1P</li>
-                                <li>Monster Hunter Rise -1P</li>
-                                <li>WWE 2K Battleground - 4P</li>
-                                <li>Overcooked 2 - 4P</li>
-                                <li>It Takes Two - 2P</li>
-                            </ul>
-                        </td>
+                        <td style="padding-left: 14px">{{ $device -> status }}</td>
                     </tr>
                     <tr>
                         <td class="align-top">Harga</td>
                         <td class="align-top">:</td>
                         <td>
                             <ol class="fw-bold">
-                                <li>Rp. 30.000 / Sesi</li>
-                                <li>Rp. 30.000 + Rp. 50.000 / Sesi (Sabtu & Minggu)</li>
+                                <li>Rp{{ $device -> price }} / Sesi</li>
+                                @if(!isset($devide -> additional_price))
+                                <li>Rp{{ $device -> price }} + Rp{{ $device -> additional_price }} / Sesi ({{ $device -> additional_price_description }})</li>
+                                @endif
                             </ol>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <div class="d-flex mt-5">
-            <div class="flex-shrink-0">
-                <img src="{{asset('image/ps5.png')}}" width="350" height="350" alt="ps4_pic">
-            </div>
-            <div class="flex-grow-1 ms-3">
-                <h4>Playstation 5</h4>
-                <table>
-                    <tr>
-                        <td>Stick</td>
-                        <td>:</td>
-                        <td style="padding-left: 14px">2</td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td>:</td>
-                        <td style="padding-left: 14px">Original</td>
-                    </tr>
-                    <tr>
-                        <td class="align-top">Game</td>
-                        <td class="align-top">:</td>
-                        <td>
-                            <ul>
-                                <li>PES eFootball 2020 (Option File Pemain 2025) - 4P</li>
-                                <li>EA SPORTS FC 2024 - 4P</li>
-                                <li>Grand Thief Auto 5 - 1P</li>
-                                <li>Monster Hunter Rise -1P</li>
-                                <li>WWE 2K Battleground - 4P</li>
-                                <li>Overcooked 2 - 4P</li>
-                                <li>It Takes Two - 2P</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-top">Harga</td>
-                        <td class="align-top">:</td>
-                        <td>
-                            <ol class="fw-bold">
-                                <li>Rp. 40.000 / Sesi</li>
-                                <li>Rp. 40.000 + Rp. 50.000 / Sesi (Sabtu & Minggu)</li>
-                            </ol>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+        @endforeach
     </div>
 @endsection
