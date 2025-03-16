@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedInteger('price');
             $table->text('description');
-            $table->unsignedInteger('additional_price')->nullable();
+            $table->unsignedInteger('additional_price')->nullable(); // On holiday
             $table->string('additional_price_description')->nullable();
             $table->string('image');
             $table->string('status');
