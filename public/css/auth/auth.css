@@ -1,0 +1,16 @@
+@media (max-width: 995px){
+    .auth-container{
+        width: 100% !important;
+    }
+
+    .content{
+        margin: 0 !important;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .content {
+        padding: 25px 10px 10px 10px !important;
+    }
+
+}
