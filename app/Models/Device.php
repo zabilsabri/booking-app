@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
     protected $table = 'devices';
+    protected $keyType = 'string';
     protected $fillable = [
         'name',
         'price',
@@ -24,6 +25,11 @@ class Device extends Model
 
     public function getAdditionalPriceAttribute($value) {
         return number_format($value, 0, ',', '.');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 
 }
