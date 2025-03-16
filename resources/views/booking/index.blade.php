@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($transactions as $index => $booking)
+    @forelse($transactions as $index => $booking)
     <tr>
         <th class="text-center" scope="row">{{ $loop->iteration + ($transactions->firstItem() - 1) }}</th>
         <td>{{ $booking -> order_id }}</td>
@@ -25,7 +25,11 @@
         <td><span class="badge text-bg-{{ $booking -> status != 'completed' ? 'warning' : 'success' }}">{{ $booking -> status }}</span></td>
         <td><a href="{{ route('detail', $booking -> id) }}" class="btn btn-primary">Detail</a></td>
     </tr>
-    @endforeach
+    @empty
+    <tr>
+      <td colspan="7">No data available</td>
+    </tr>
+    @endforelse
   </tbody>
 </table>
 <div class="mt-4 d-flex justify-content-end">
