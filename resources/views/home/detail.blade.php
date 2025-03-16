@@ -61,10 +61,10 @@
             onSuccess: function(result){
                 window.location.href = '{{ route('success', $transaction->order_id) }}';},
             onPending: function(result){
-                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
             },
             onError: function(result){
-                /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
             }
         });
       };
