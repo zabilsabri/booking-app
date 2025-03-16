@@ -2,3 +2,9 @@
     padding: 10px 155px 10px 155px;
     background-color: #003B95;
 }
+
+.profile_picture{
+    object-fit: cover;     
+    overflow: hidden;
+    border-radius: 50%;
+}
